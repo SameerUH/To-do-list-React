@@ -1,7 +1,13 @@
-rowbuttons {
+.rowbuttons {
   display: flex;
   justify-content: space-between;
-  width: 20vw;
-  height: 30vw;
+  margin: 0 auto;
+  width: 100%;
+  height: 20px;
   padding: 30px;
+}
+
+p {
+  max-inline-size: 10ch;
+  writing-mode: sideways-rl;
 }
