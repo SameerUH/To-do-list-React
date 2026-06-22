@@ -5,9 +5,10 @@ function App() {
 
   return (
     <>
-    <div className="rowbuttons">
+    <div className="navbar">
       <button>Button1</button>
       <button>Button2</button>
+      <p>logo</p>
       <button>Button3</button>
       <button>Button4</button>
     </div>
