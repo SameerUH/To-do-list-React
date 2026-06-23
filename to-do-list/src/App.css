@@ -4,7 +4,7 @@
   margin: 0 auto;
   height: 20px;
   width: 100%;
-  padding: 30px;
+  margin-top: 1em;
   margin-bottom: 200px;
 }
 
@@ -21,5 +21,5 @@
 
 p {
   max-inline-size: 10ch;
-  writing-mode: sideways-rl;
+  writing-mode:sideways-rl;
 }
