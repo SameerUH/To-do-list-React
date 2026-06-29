@@ -1,25 +1,5 @@
-.navbar {
-  display: flex;
-  justify-content: space-evenly;
-  margin: 0 auto;
-  height: 20px;
-  width: 100%;
-  margin-top: 1em;
-  margin-bottom: 200px;
-}
+@import "tailwindcss";
 
-.navbar button {
-  border-radius: 15px;
-  padding: 2em;
-
-}
-.navbar p{
-  writing-mode: initial;
-  text-decoration: solid;
-  color: black;
-}
-
-p {
-  max-inline-size: 10ch;
-  writing-mode:sideways-rl;
+@utility sideways-lr {
+    writing-mode: sideways-lr;
 }
