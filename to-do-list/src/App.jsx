@@ -5,15 +5,19 @@ function App() {
 
   return (
     <>
-    <div class="flex justify-evenly h-5 w-full mt-[1em] mb-[200px] mx-auto my-0">
-      <button class="rounded-sm padding-[2em] bg-blue-100 text-black">Button1</button>
-      <button class="rounded-sm padding-[2em] bg-blue-100 text-black">Button2</button>
-      <p class="decoration-solid sideways-lr">logo</p>
-      <button class="rounded-sm padding-[2em] bg-blue-100 text-black">Button3</button>
-      <button class="rounded-sm padding-[2em] bg-blue-100 text-black">Button4</button>
+    <div class="flex justify-evenly h-15 w-full mt-[1em] mb-[200px] mx-auto my-0 bg-blue-200 border-2 border-black-200 items-center">
+      <button class="rounded-full padding-[2em] bg-blue-100 text-black">Button1</button>
+      <button class="rounded-full padding-[2em] bg-blue-100 text-black">Button2</button>
+      <p class="decoration-solid ">TO-DO NUMBER</p>
+      <button class="rounded-full padding-[2em] bg-blue-100 text-black">Button3</button>
+      <button class="rounded-full padding-[2em] bg-blue-100 text-black">Button4</button>
     </div>
 
-    <p class="max-inline-[10ch] sideways-lr">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, a illo laudantium ipsa fugiat repellendus tenetur. Quisquam illo quae explicabo consectetur aliquid unde asperiores nemo dolores magnam. Impedit, vero dolorum.</p>
+    <div class="flex h-10 mx-auto my-0 justify-evenly">
+      <div class="h-base w-20 bg-red-600 border-2 border-black-200"></div>
+      <input class="flex border-2 border-black-200 w-md" type="text" placeholder="Add a new todo..." />
+    </div>
+    
     </>
   )
 }
