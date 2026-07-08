@@ -13,10 +13,11 @@ function App() {
       <button class="rounded-full padding-[2em] bg-blue-100 text-black">Button4</button>
     </div>
 
-    <div class="flex h-10 mx-auto my-0 justify-evenly">
+    <form class="flex h-10 mx-auto my-0 justify-evenly">
       <div class="h-base w-20 bg-red-600 border-2 border-black-200"></div>
-      <input class="flex border-2 border-black-200 w-md" type="text" placeholder="Add a new todo..." />
-    </div>
+      <input class="border-2 border-black-200 w-md" type="text" placeholder="Add a new todo..." name="task"/>
+      <input class="border-2 border-black-200 w-xs cursor-pointer" type="submit" value="ADD"/>
+    </form>
     
     </>
   )
