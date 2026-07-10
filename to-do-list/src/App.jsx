@@ -1,8 +1,14 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
+import TaskEntry from './TaskEntry';
+
 
 function App() {
-
+    const [data, setData] = useState({});
+    
+    const updateData = (taskParams) => {
+      setData(taskParams);
+  };
   return (
     <>
     <div class="flex justify-evenly h-15 w-full mt-[1em] mb-[200px] mx-auto my-0 bg-blue-200 border-2 border-black-200 items-center">
@@ -13,12 +19,8 @@ function App() {
       <button class="rounded-full padding-[2em] bg-blue-100 text-black">Button4</button>
     </div>
 
-    <form class="flex h-10 mx-auto my-0 justify-evenly">
-      <div class="h-base w-20 bg-red-600 border-2 border-black-200"></div>
-      <input class="border-2 border-black-200 w-md" type="text" placeholder="Add a new todo..." name="task"/>
-      <input class="border-2 border-black-200 w-xs cursor-pointer" type="submit" value="ADD"/>
-    </form>
-    
+    <TaskEntry callback={updateData}/>
+    <p>{"data" in data ? data["data"] : "No Data to display"}</p>
     </>
   )
 }
