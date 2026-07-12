@@ -20,7 +20,7 @@ function App() {
     </div>
 
     <TaskEntry callback={updateData}/>
-    <p>{"data" in data ? data["data"] : "No Data to display"}</p>
+    <p>{"task" in data ? data["task"] : "No Data to display"}</p>
     </>
   )
 }
