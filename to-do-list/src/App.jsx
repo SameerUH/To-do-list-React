@@ -21,6 +21,7 @@ function App() {
 
     <TaskEntry callback={updateData}/>
     <p>{"task" in data ? data["task"] : "No Data to display"}</p>
+    <p>{"category" in data ? data["category"] : "No Data to display"}</p>
     </>
   )
 }
