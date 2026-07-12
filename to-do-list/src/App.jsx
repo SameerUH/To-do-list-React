@@ -9,6 +9,7 @@ function App() {
     const updateData = (taskParams) => {
       setData(taskParams);
   };
+  
   return (
     <>
     <div class="flex justify-evenly h-15 w-full mt-[1em] mb-[200px] mx-auto my-0 bg-blue-200 border-2 border-black-200 items-center">
@@ -22,6 +23,7 @@ function App() {
     <TaskEntry callback={updateData}/>
     <p>{"task" in data ? data["task"] : "No Data to display"}</p>
     <p>{"category" in data ? data["category"] : "No Data to display"}</p>
+    <p>{"date" in data ? data["date"] : "No Data to display"}</p>
     </>
   )
 }

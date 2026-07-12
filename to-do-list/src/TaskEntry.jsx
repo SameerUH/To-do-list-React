@@ -23,7 +23,7 @@ function TaskEntry(props) {
                     <option value="Career">Career</option>
                     <option value="Education">Education</option>
                 </select>
-                <DatePicker class="border-2 border-black-200" showIcon/>
+                <input type="date" class="border-2 border-black-200" value={date} onChange={(e) => setDate(e.target.value)}></input>
                 <input class="border-2 border-black-200 w-xs cursor-pointer" type="button" value="ADD" onClick={addButton}/>
             </form>
         </div>
