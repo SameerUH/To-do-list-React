@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import TaskEntry from './TaskEntry';
+import TaskOutput from './TaskOutput'
 
 
 function App() {
@@ -21,9 +22,7 @@ function App() {
     </div>
 
     <TaskEntry callback={updateData}/>
-    <p>{"task" in data ? data["task"] : "No Data to display"}</p>
-    <p>{"category" in data ? data["category"] : "No Data to display"}</p>
-    <p>{"date" in data ? data["date"] : "No Data to display"}</p>
+    <TaskOutput data={data}/>
     </>
   )
 }
