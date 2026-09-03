@@ -2,7 +2,7 @@ import { useState } from "react";
 
 function TaskOutput(props) {
     return (
-        <div className="flex h-10 mx-auto my-0 justify-center w-5/6">
+        <div className="flex h-10 mx-auto my-0 justify-center w-5/6 pb-2">
             <div className="h-base w-20 bg-green-600 border-2 border-black-200"></div>
             <p className="border-2 border-black-200 w-md">{props.data.task}</p>
             <p className="border-2 border-black-200 w-s">{props.data.category}</p>
