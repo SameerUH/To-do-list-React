@@ -36,23 +36,36 @@ function App() {
         setTodos(todos.filter(t => t.id !== id));
     };
 
+    const today = new Date().toISOString().split('T')[0];
+    const todaysTodos = todos.filter(todo => todo.date === today);
+    const futureTodos = todos.filter(todo => todo.date != today)
+
     return (
         <>
         <div className="flex justify-evenly h-15 w-full mt-[1em] mb-[200px] mx-auto my-0 bg-blue-200 border-2 border-black-200 items-center">
           <button className="rounded-full padding-[2em] bg-blue-100 text-black">Button1</button>
           <button className="rounded-full padding-[2em] bg-blue-100 text-black">Button2</button>
-          <p className="decoration-solid ">{todos.length}</p>
+          <p className="decoration-solid rounded-full bg-black w-10 h-10">{todos.length}</p>
           <button className="rounded-full padding-[2em] bg-blue-100 text-black">Button3</button>
           <button className="rounded-full padding-[2em] bg-blue-100 text-black">Button4</button>
         </div>
 
         <TaskEntry callback={addTodo}/>
+
         <div className="flex w-3/4 self-center border-b-1 mb-5">
             <p className="italic">Todays tasks ({new Date().toLocaleDateString("en-UK")}):</p>
         </div>
 
-        {todos.map(todo => (
-            <TaskOutput key={todo.id} data={todo} onDelete={deleteTodo} />
+        {todaysTodos.map(todo => (
+            <TaskOutput key={todo.id} data={todo} onDelete={deleteTodo}/>
+        ))}
+
+        <div className="flex w-3/4 self-center border-b-1 mb-5">
+            <p className="italic">Future tasks:</p>
+        </div>
+
+        {futureTodos.map(todo => (
+            <TaskOutput key={todo.id} data={todo} onDelete={deleteTodo}/>
         ))}
         </>
     )

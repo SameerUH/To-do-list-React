@@ -8,7 +8,7 @@ function TaskEntry(props) {
 
 
     const addButton = () => {
-        props.callback({task: task, category: category, date : date.split("-").reverse().join("/")});
+        props.callback({task: task, category: category, date : date});
     };
 
     return (
