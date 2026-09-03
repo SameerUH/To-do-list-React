@@ -6,7 +6,7 @@ function TaskOutput(props) {
             <div className="h-base w-20 bg-green-600 border-2 border-black-200"></div>
             <p className="border-2 border-black-200 w-md">{props.data.task}</p>
             <p className="border-2 border-black-200 w-s">{props.data.category}</p>
-            <p className="border-2 border-black-200 w-3xs">{props.data.date}</p>
+            <p className="border-2 border-black-200 w-3xs">{props.data.date.split("-").reverse().join("/")}</p>
             <input 
                 className="border-2 border-black-200 w-2xs cursor-pointer" 
                 type="button" 
