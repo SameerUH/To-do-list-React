@@ -3,11 +3,11 @@ import { useState } from "react";
 
 function TaskEntry(props) {
     const [task, setTask] = useState("");
-    const [category, setCategory] = useState("");
+    const [category, setCategory] = useState("Other");
     const [date, setDate] = useState("")
 
-
     const addButton = () => {
+        if (task.length <= 0 || date.length <= 0) return;
         props.callback({task: task, category: category, date : date});
     };
 
