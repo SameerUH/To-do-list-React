@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import TaskEntry from './TaskEntry';
-import TaskOutput from './TaskOutput'
+import TaskOutput from './TaskOutput';
+import Card from './ErrorCard';
+
 
 function App() {
     const [todos, setTodos] = useState([]);

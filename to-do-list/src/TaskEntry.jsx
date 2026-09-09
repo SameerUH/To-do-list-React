@@ -1,13 +1,22 @@
 import { useState } from "react";
+import Card from "./ErrorCard";
 
 
 function TaskEntry(props) {
     const [task, setTask] = useState("");
     const [category, setCategory] = useState("Other");
-    const [date, setDate] = useState("")
+    const [date, setDate] = useState("");
+    const [error, setError] = useState(false);
 
     const addButton = () => {
-        if (task.length <= 0 || date.length <= 0) return;
+        if (task.length <= 0 || date.length <= 0) {
+            if (error) return
+            setError(true);
+            setTimeout(() => {
+                setError(false);
+            }, 3000)
+            return
+        }
         props.callback({task: task, category: category, date : date});
     };
 
@@ -23,8 +32,10 @@ function TaskEntry(props) {
                     <option value="Education">Education</option>
                 </select>
                 <input type="date" className="border-2 border-black-200" value={date} onChange={(e) => setDate(e.target.value)}></input>
-                <input className="border-2 border-black-200 w-2xs cursor-pointer" type="button" value="ADD" onClick={addButton}/>
+                <input className="border-2 border-black-200 w-3xs cursor-pointer" type="button" value="EDIT"></input>
+                <input className="border-2 border-black-200 w-3xs cursor-pointer" type="button" value="ADD" onClick={addButton}/>
             </form>
+            {error && <Card />}
         </div>
     );
 }
