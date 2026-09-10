@@ -1,6 +1,8 @@
 import { useState } from "react";
+import EditCard from "./EditCard";
 
 function TaskOutput(props) {
+    const [edit, setEdit]= useState(false);
     const categoryMap = new Map();
 
     categoryMap.set("Personal", 'bg-green-600');
@@ -14,9 +16,9 @@ function TaskOutput(props) {
             <p className="border-2 border-black w-md">{props.data.task}</p>
             <p className="border-2 border-black w-s">{props.data.category}</p>
             <p className="border-2 border-black w-3xs">{props.data.date.split("-").reverse().join("/")}</p>
-            <input className="border-2 border-black w-3xs cursor-pointer" type="button" value="EDIT"></input>
+            <input className="border-2 border-black w-3xs cursor-pointer" type="button" value="EDIT" onClick={() => setEdit(true)}></input>
             <input className="border-2 border-black w-3xs cursor-pointer" type="button" value="DELETE" onClick={() => props.onDelete(props.data.id)}/>
-
+            {edit && <EditCard setEdit={setEdit} data={props.data} onSave={props.onEdit} />}
         </div>
     );
 }
