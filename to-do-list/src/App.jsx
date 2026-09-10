@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import TaskEntry from './TaskEntry';
 import TaskOutput from './TaskOutput';
-import Card from './ErrorCard';
 
 
 function App() {
@@ -45,10 +44,10 @@ function App() {
 
     return (
         <>
-        <div className="flex justify-evenly h-15 w-full mt-[1em] mb-50 mx-auto my-0 bg-blue-200 border-2 border-black-200 items-center">
+        <div className="flex justify-evenly h-15 w-full mt-[1em] mb-50 mx-auto my-0 bg-blue-200 border-2 border-black items-center">
           <button className="rounded-full padding-[2em] bg-blue-100 text-black">Button1</button>
           <button className="rounded-full padding-[2em] bg-blue-100 text-black">Button2</button>
-          <p className="decoration-solid rounded-full bg-black w-10 h-10">{todos.length}</p>
+          <p className="decoration-solid rounded-full bg-black w-10 h-10 text-white">{todos.length}</p>
           <button className="rounded-full padding-[2em] bg-blue-100 text-black">Button3</button>
           <button className="rounded-full padding-[2em] bg-blue-100 text-black">Button4</button>
         </div>
