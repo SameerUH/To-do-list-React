@@ -15,18 +15,20 @@ app.get('/api/todos', (req, res) => {
 // Add a todo
 app.post('/api/todos', (req, res) => {
   const { task, category, date } = req.body;
+  const description = req.body.description || '';
+  const priority = req.body.priority || 'Low';
   const result = db.prepare(
-    'INSERT INTO todos (task, category, date) VALUES (?, ?, ?)'
-  ).run(task, category, date);
-  res.json({ id: result.lastInsertRowid, task, category, date, completed: 0 });
+    'INSERT INTO todos (task, category, date, description, priority) VALUES (?, ?, ?, ?, ?)'
+  ).run(task, category, date, description, priority);
+  res.json({ id: result.lastInsertRowid, task, category, date, description, priority, completed: 0 });
 });
 
 // Toggle/update a todo
 app.put('/api/todos/:id', (req, res) => {
-  const { completed } = req.body;
-  db.prepare('UPDATE todos SET completed = ? WHERE id = ?')
-    .run(completed ? 1 : 0, req.params.id);
-  res.json({ success: true });
+  const {task, category, date, description, priority} = req.body;
+  db.prepare('UPDATE todos SET task = ?, category = ?, date = ?, description = ?, priority = ? WHERE id = ?')
+    .run(task, category, date, description, priority, req.params.id);
+  res.json({ id: req.params.id, task, category, date, description, priority});
 });
 
 // Delete a todo

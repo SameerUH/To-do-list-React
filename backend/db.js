@@ -7,7 +7,9 @@ db.exec(`
         task TEXT NOT NULL,
         category TEXT NOT NULL,
         date DATE NOT NULL,
-        completed BOOLEAN DEFAULT 0
+        completed BOOLEAN DEFAULT 0,
+        description TEXT NULL,
+        priority TEXT NULL
     )
 `);
 
