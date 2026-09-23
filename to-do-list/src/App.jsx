@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import TaskEntry from './TaskEntry';
 import TaskOutput from './TaskOutput';
+import EditCard from './EditCard';
 
 
 function App() {
@@ -42,6 +43,14 @@ function App() {
     const futureTodos = todos.filter(todo => todo.date > today);
     const pastTodos = todos.filter(todo => todo.date < today);
 
+    const [editingTodo, setEditingTodo] = useState(null);
+
+    const editTodo = async (id, updatedFields) => {
+        const res = await fetch(`http://localhost:3000/api/todos/${id}`, {method: 'PUT', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(updatedFields),});
+        const updated = await res.json();
+        setTodos(todos.map(t => t.id === id ? {...t, ...updated} : t));
+    };
+
     return (
         <>
         <div className="flex justify-evenly h-15 w-full mt-[1em] mb-50 mx-auto my-0 bg-blue-200 border-2 border-black items-center">
@@ -59,7 +68,7 @@ function App() {
         </div>
 
         {pastTodos.map(todo => (
-            <TaskOutput key={todo.id} data={todo} onDelete={deleteTodo}/>
+            <TaskOutput key={todo.id} data={todo} onDelete={deleteTodo} onEditClick={editTodo}/>
         ))}
 
         <div className="flex w-3/4 self-center border-b mb-5">
@@ -67,7 +76,7 @@ function App() {
         </div>
 
         {todaysTodos.map(todo => (
-            <TaskOutput key={todo.id} data={todo} onDelete={deleteTodo}/>
+            <TaskOutput key={todo.id} data={todo} onDelete={deleteTodo} onEditClick={editTodo}/>
         ))}
 
         <div className="flex w-3/4 self-center border-b mb-5">
@@ -75,8 +84,12 @@ function App() {
         </div>
 
         {futureTodos.map(todo => (
-            <TaskOutput key={todo.id} data={todo} onDelete={deleteTodo}/>
+            <TaskOutput key={todo.id} data={todo} onDelete={deleteTodo} onEditClick={editTodo}/>
         ))}
+
+        {editingTodo && (
+            <EditCard todo={editingTodo} onSave={editTodo} setEdit={() => setEditingTodo(null)}/>
+        )}
         </>
     )
 }

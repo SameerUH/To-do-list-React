@@ -7,8 +7,10 @@ function TaskEntry(props) {
     const [task, setTask] = useState("");
     const [category, setCategory] = useState("Other");
     const [date, setDate] = useState("");
+    const [description, setDescription] = useState("");
+    const [priority, setPriority] = useState("Low");
     const [error, setError] = useState(false);
-    const [edit, setEdit] = useState(false);
+    const [showDetails, setShowDetails] = useState(false);
 
     const addButton = () => {
         if (task.length <= 0 || date.length <= 0) {
@@ -19,14 +21,15 @@ function TaskEntry(props) {
             }, 3000)
             return
         }
-        props.callback({task: task, category: category, date : date});
+        props.callback({task, category, date, description, priority});
+        setTask(""); setCategory("Other"); setDate(""); setDescription(""); setPriority("");
     };
 
-    const editButton = () => {
-        if (edit) return
-        setEdit(true);
-        return
-    };
+    const saveDraftDetails = (_, updatedFields) => {
+        setDescription(updatedFields.description);
+        setPriority(updatedFields.priority);
+        setShowDetails(false);
+    }
 
     return (
         <div className="mb-[2em]">
@@ -40,11 +43,17 @@ function TaskEntry(props) {
                     <option value="Education">Education</option>
                 </select>
                 <input type="date" className="border-2 border-black" value={date} onChange={(e) => setDate(e.target.value)} text-black></input>
-                <input className="border-2 border-black w-3xs cursor-pointer" type="button" value="EDIT" onClick={editButton}></input>
+                <input className="border-2 border-black w-3xs cursor-pointer" type="button" value="EDIT" onClick={() => setShowDetails(true)}></input>
                 <input className="border-2 border-black w-3xs cursor-pointer" type="button" value="ADD" onClick={addButton}/>
             </form>
             {error && <ErrorCard />}
-            {edit && <EditCard edit={edit} setEdit={setEdit}/>}
+            {showDetails && (
+                <EditCard
+                    todo={{task, category, date, description, priority}}
+                    onSave={saveDraftDetails}
+                    setEdit={() => setShowDetails(false)}
+                />
+            )}
         </div>
     );
 }

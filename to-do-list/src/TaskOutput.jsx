@@ -18,7 +18,7 @@ function TaskOutput(props) {
             <p className="border-2 border-black w-3xs">{props.data.date.split("-").reverse().join("/")}</p>
             <input className="border-2 border-black w-3xs cursor-pointer" type="button" value="EDIT" onClick={() => setEdit(true)}></input>
             <input className="border-2 border-black w-3xs cursor-pointer" type="button" value="DELETE" onClick={() => props.onDelete(props.data.id)}/>
-            {edit && <EditCard setEdit={setEdit} data={props.data} onSave={props.onEdit} />}
+            {edit && <EditCard setEdit={setEdit} todo={props.data} onSave={props.onEditClick} />}
         </div>
     );
 }
