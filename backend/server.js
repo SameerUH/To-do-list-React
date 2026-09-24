@@ -1,5 +1,5 @@
-const express = require('express');
-const cors = require('cors');
+const express = require('express'); //Handles routes and requests.
+const cors = require('cors'); //Allows communciation to the server.
 const db = require('./db');
 
 const app = express();
@@ -9,7 +9,7 @@ app.use(express.json());
 // Get all todos
 app.get('/api/todos', (req, res) => {
   const todos = db.prepare('SELECT * FROM todos').all();
-  res.json(todos);
+  res.json(todos); //Sends a response to the request.
 });
 
 // Add a todo
@@ -19,7 +19,7 @@ app.post('/api/todos', (req, res) => {
   const priority = req.body.priority || 'Low';
   const result = db.prepare(
     'INSERT INTO todos (task, category, date, description, priority) VALUES (?, ?, ?, ?, ?)'
-  ).run(task, category, date, description, priority);
+  ).run(task, category, date, description, priority); //Updates database and adds ? as placeholder values.
   res.json({ id: result.lastInsertRowid, task, category, date, description, priority, completed: 0 });
 });
 

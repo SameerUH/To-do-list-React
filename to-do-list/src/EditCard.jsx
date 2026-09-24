@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
 function EditCard( {todo, onSave, setEdit} ) {
+    //Passing through task for the edit card.
     const [task, setTask] = useState(todo.task);
     const [description, setDescription] = useState(todo.description || '');
     const [category, setCategory] = useState(todo.category);

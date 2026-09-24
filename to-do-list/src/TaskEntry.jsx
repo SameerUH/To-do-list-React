@@ -22,13 +22,13 @@ function TaskEntry(props) {
             return
         }
         props.callback({task, category, date, description, priority});
-        setTask(""); setCategory("Other"); setDate(""); setDescription(""); setPriority("");
+        setTask(""); setCategory("Other"); setDate(""); setDescription(""); setPriority(""); //Clears form for next task to be inputted.
     };
 
-    const saveDraftDetails = (_, updatedFields) => {
+    const saveDraftDetails = (_, updatedFields) => { //Underscore appears to be a fake parameter and we aren't even using it?
         setDescription(updatedFields.description);
         setPriority(updatedFields.priority);
-        setShowDetails(false);
+        setShowDetails(false); //Closes edit card.
     }
 
     return (
