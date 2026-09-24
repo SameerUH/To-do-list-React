@@ -1,9 +1,9 @@
 //Imports:
 import { useState, useEffect } from 'react';
 import './App.css';
-import TaskEntry from './TaskEntry';
-import TaskOutput from './TaskOutput';
-import EditCard from './EditCard';
+import TaskEntry from './components/TaskEntry';
+import TaskOutput from './components/TaskOutput';
+import EditCard from './components/EditCard';
 
 
 function App() {
@@ -55,14 +55,6 @@ function App() {
 
     return (
         <>
-        <div className="flex justify-evenly h-15 w-full mt-[1em] mb-50 mx-auto my-0 bg-blue-200 border-2 border-black items-center">
-          <button className="rounded-full padding-[2em] bg-blue-100 text-black">Button1</button>
-          <button className="rounded-full padding-[2em] bg-blue-100 text-black">Button2</button>
-          <p className="decoration-solid rounded-full bg-black w-10 h-10 text-white">{todos.length}</p>
-          <button className="rounded-full padding-[2em] bg-blue-100 text-black">Button3</button>
-          <button className="rounded-full padding-[2em] bg-blue-100 text-black">Button4</button>
-        </div>
-
         <TaskEntry callback={addTodo}/>
 
         <div className="flex w-3/4 self-center border-b mb-5">
