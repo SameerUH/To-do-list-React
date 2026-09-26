@@ -36,7 +36,7 @@ function ProgressBar({duration}) {
 }
 
 
-function Pomodoro() {
+function Pomodoro({todos, completeTodo}) {
     const Ref = useRef(null); //References a value that's not needed for rendering.
 
     const [timer, setTimer] = useState("");
@@ -78,6 +78,7 @@ function Pomodoro() {
         setProgressDone(false);
     }
 
+    const incompleteTodos = todos.filter(e=> !e.completed)
 
     return (
         <>
@@ -98,9 +99,25 @@ function Pomodoro() {
                     ""
                 } {/*Displays the progress bar.*/}
         </div>
+
+        <div className="w-1/2 mx-auto my-0 mt-10">
+            <h2 className="flex w-5/6 self-center border-b mb-5 italic">Tasks to focus on:</h2>
+            {incompleteTodos.map(todo => (
+                <div key={todo.id} className="flex justify-between items-center border-2 border-black p-2 mb-2">
+                    <span>{todo.task}</span>
+                    <button 
+                        className="border-2 border-black rounded px-2 cursor-pointer bg-green-500 font-semibold" 
+                        onClick={() => completeTodo(todo.id)}
+                    >
+                        Complete
+                    </button>
+                </div>
+            ))}
+            {incompleteTodos.length === 0 && <p>No tasks to complete</p>}
+        </div>
         </>
 
-        
+
 
     );
 }

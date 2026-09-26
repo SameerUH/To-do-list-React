@@ -25,10 +25,10 @@ app.post('/api/todos', (req, res) => {
 
 // Toggle/update a todo
 app.put('/api/todos/:id', (req, res) => {
-  const {task, category, date, description, priority} = req.body;
-  db.prepare('UPDATE todos SET task = ?, category = ?, date = ?, description = ?, priority = ? WHERE id = ?')
-    .run(task, category, date, description, priority, req.params.id);
-  res.json({ id: req.params.id, task, category, date, description, priority});
+  const {task, category, date, description, priority, completed} = req.body;
+  db.prepare('UPDATE todos SET task = ?, category = ?, date = ?, description = ?, priority = ?, completed = ? WHERE id = ?')
+    .run(task, category, date, description, priority, completed ? 1:0, req.params.id);
+  res.json({ id: req.params.id, task, category, date, description, priority, completed: completed ? 1 : 0});
 });
 
 // Delete a todo
