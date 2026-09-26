@@ -55,6 +55,10 @@ function App() {
 
     return (
         <>
+        <div className='flex border-black border-2 w-1/2 mx-auto p-5 font-bold text-2xl mb-8 italic bg-white text-blue-700'>
+            <p>Insert inspirational quote...</p>
+        </div>
+
         <TaskEntry callback={addTodo}/>
 
         <div className="flex w-3/4 self-center border-b mb-5">

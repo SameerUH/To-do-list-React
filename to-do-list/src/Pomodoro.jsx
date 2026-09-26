@@ -28,9 +28,9 @@ function ProgressBar({duration}) {
     };
 
     return (
-        <div className="flex w-1/2 h-6 bg-gray-300 rounded-full overflow-hidden border-2 border-black">
-            <div className="h-full bg-blue-500 transition-all justify-center" style={{width: `${progress}%`}}>{`${Math.round(progress)}%`}</div>
-            <span className="absolute inset-0 flex items-center justify-center text-sm" style={{color: getColor(progress)}}></span>
+        <div className="relative flex w-1/2 h-6 bg-gray-300 rounded-full overflow-hidden border-2 border-black mx-auto">
+            <div className="h-full bg-blue-500 transition-all justify-center" style={{width: `${progress}%`}}></div>
+            <span className="absolute inset-0 flex items-center justify-center text-sm" style={{color: getColor(progress)}}>{`${Math.round(progress)}%`}</span>
         </div>
     );
 }
@@ -41,7 +41,7 @@ function Pomodoro() {
 
     const [timer, setTimer] = useState("");
 
-    const [timeLeft, setTimeLeft] = useState("");
+    const [timeLeft, setTimeLeft] = useState("0");
     const [isActive, setIsActive] = useState(false);
     const [progressDone, setProgressDone] = useState(false);
 
@@ -81,33 +81,27 @@ function Pomodoro() {
 
     return (
         <>
-        <h1>Pomodoro timer page</h1>
+        <h1>Pomodoro timer page:</h1>
 
         <div className="text-center mt-20px">
-            <input type="number" ref={Ref} onChange={handleInputChange} value={timer} placeholder="Enter time in minutes"></input>
-            <button onClick={handleButtonClick}>
+            <div><input className="border-black border-2 text-center mb-5 mx-auto" type="number" ref={Ref} onChange={handleInputChange} value={timer} placeholder="Enter time in minutes"></input></div>
+            <button className="border-black border-2 rounded-2xl p-1 mb-5 bg-green-400 font-bold" onClick={handleButtonClick}>
                 {isActive ? "Counting down...": "Start timer"} {/* Shorthand if statement which checks if timer is active or not, if it is, it selects the first option.*/}
             </button>
 
-            <div className="m-20px">
-                {!isActive && !progressDone && (
-                    "Enter time and Press the start button"
-                )}
-
-                {isActive && (
-                    `${minutes}:${seconds}`
-                )}
-
-                {!isActive && progressDone && (
-                    "Times up!"
-                )}
+            <div className="flex justify-center rounded-lg p-4 border-black border-2 w-1/2 mx-auto my-0 text-center mb-5 text-4xl bg-white font-bold">
+                    {`${minutes}:${seconds}`}
             </div>
-            {isActive ? 
+            
+                {isActive ? 
                     <ProgressBar duration={customTimeSeconds * 1000} /> :
                     ""
                 } {/*Displays the progress bar.*/}
         </div>
         </>
+
+        
+
     );
 }
 
