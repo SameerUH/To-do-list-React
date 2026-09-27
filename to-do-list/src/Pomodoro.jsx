@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import EditCard from "./components/EditCard";
 
 function ProgressBar({duration}) {
     const [progress, setProgress] = useState(100); //Sets progress bar to 100%
@@ -72,13 +73,23 @@ function Pomodoro({todos, completeTodo}) {
         setTimer(Ref.current.value); //Sets the timer to the input.
     }
 
-    const handleButtonClick = () => {
+    const startTimerButton = () => {
         setTimeLeft(customTimeSeconds);
         setIsActive(true);
         setProgressDone(false);
     }
 
+    const stopTimerButton = () => {
+        setTimeLeft("0");
+        setIsActive(false);
+        setProgressDone(true);
+    }
+
     const incompleteTodos = todos.filter(e=> !e.completed)
+
+    const [showDetails, setShowDetails] = useState(null);
+
+
 
     return (
         <>
@@ -86,10 +97,12 @@ function Pomodoro({todos, completeTodo}) {
 
         <div className="text-center mt-20px">
             <div><input className="border-black border-2 text-center mb-5 mx-auto" type="number" ref={Ref} onChange={handleInputChange} value={timer} placeholder="Enter time in minutes"></input></div>
-            <button className="border-black border-2 rounded-2xl p-1 mb-5 bg-green-400 font-bold" onClick={handleButtonClick}>
-                {isActive ? "Counting down...": "Start timer"} {/* Shorthand if statement which checks if timer is active or not, if it is, it selects the first option.*/}
-            </button>
-
+            <div className="flex justify-evenly w-1/2 mx-auto">
+                <button className="border-black border-2 rounded-2xl p-1 mb-5 bg-green-400 font-bold cursor-pointer" onClick={startTimerButton}>
+                    {isActive ? "Counting down...": "Start timer"} {/* Shorthand if statement which checks if timer is active or not, if it is, it selects the first option.*/}
+                </button>
+                <button className="border-black border-2 rounded-2xl p-1 mb-5 bg-red-500 font-bold cursor-pointer" onClick={stopTimerButton}>Stop timer</button>
+            </div>
             <div className="flex justify-center rounded-lg p-4 border-black border-2 w-1/2 mx-auto my-0 text-center mb-5 text-4xl bg-white font-bold">
                     {`${minutes}:${seconds}`}
             </div>
@@ -105,12 +118,8 @@ function Pomodoro({todos, completeTodo}) {
             {incompleteTodos.map(todo => (
                 <div key={todo.id} className="flex justify-between items-center border-2 border-black p-2 mb-2">
                     <span>{todo.task}</span>
-                    <button 
-                        className="border-2 border-black rounded px-2 cursor-pointer bg-green-500 font-semibold" 
-                        onClick={() => completeTodo(todo.id)}
-                    >
-                        Complete
-                    </button>
+                    <button className="border-2 border-black rounded px-2 cursor-pointer bg-green-500 font-semibold" onClick={() => completeTodo(todo.id)}>Complete</button>
+                    <button className="border-2 border-black rounded px-2 cursor-pointer font-semibold">Details</button>
                 </div>
             ))}
             {incompleteTodos.length === 0 && <p>No tasks to complete</p>}
