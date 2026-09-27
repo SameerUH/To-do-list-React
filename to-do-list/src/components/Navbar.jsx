@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import App from '../App';
 import Pomodoro from '../Pomodoro';
 import Settings from '../Settings';
+import Categories from '../Categories';
 
 function Navbar() {
     const [todos, setTodos] = useState([]);
@@ -57,6 +58,7 @@ function Navbar() {
                 <Link className="rounded-full padding-[2em] bg-blue-100 text-black" to="/pomodoro">Pomodoro</Link>
                 <p className="decoration-solid rounded-full bg-black w-10 h-10 text-white flex items-center justify-center">{todos.filter(t => !t.completed).length}</p>
                 <Link className="rounded-full padding-[2em] bg-blue-100 text-black" to="/settings">Settings</Link>
+                <Link className="rounded-full padding-[2em] bg-blue-100 text-black" to="/categories">Categories</Link>
             </div>
 
             <Routes>
@@ -67,6 +69,7 @@ function Navbar() {
                     <Pomodoro todos={todos} completeTodo={completeTodo} editTodo={editTodo} />
                 }/>
                 <Route path="/settings" element={<Settings />}/>
+                <Route path="/categories" element={<Categories todos={todos}/>}/>
             </Routes>
         </BrowserRouter>
     );
