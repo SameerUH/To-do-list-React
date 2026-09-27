@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, use } from "react";
 import EditCard from "./components/EditCard";
 
 function ProgressBar({duration}) {
@@ -37,7 +37,7 @@ function ProgressBar({duration}) {
 }
 
 
-function Pomodoro({todos, completeTodo}) {
+function Pomodoro({todos, completeTodo, editTodo}) {
     const Ref = useRef(null); //References a value that's not needed for rendering.
 
     const [timer, setTimer] = useState("");
@@ -87,7 +87,7 @@ function Pomodoro({todos, completeTodo}) {
 
     const incompleteTodos = todos.filter(e=> !e.completed)
 
-    const [showDetails, setShowDetails] = useState(null);
+    const [selectedTodo, setSelectedTodo] = useState(null);
 
 
 
@@ -119,10 +119,12 @@ function Pomodoro({todos, completeTodo}) {
                 <div key={todo.id} className="flex justify-between items-center border-2 border-black p-2 mb-2">
                     <span>{todo.task}</span>
                     <button className="border-2 border-black rounded px-2 cursor-pointer bg-green-500 font-semibold" onClick={() => completeTodo(todo.id)}>Complete</button>
-                    <button className="border-2 border-black rounded px-2 cursor-pointer font-semibold">Details</button>
+                    <button className="border-2 border-black rounded px-2 cursor-pointer font-semibold" onClick={() => setSelectedTodo(todo)}>Details</button>
                 </div>
             ))}
             {incompleteTodos.length === 0 && <p>No tasks to complete</p>}
+            
+            {selectedTodo && (<EditCard todo={selectedTodo} onSave={editTodo} setEdit={() => setSelectedTodo(null)} />)}
         </div>
         </>
 

@@ -55,21 +55,16 @@ function Navbar() {
             <div className="flex justify-evenly h-15 w-full mt-[1em] mb-8 mx-auto my-0 bg-blue-200 border-2 border-black items-center">
                 <Link className="rounded-full padding-[2em] bg-blue-100 text-black" to="/">Todos</Link>
                 <Link className="rounded-full padding-[2em] bg-blue-100 text-black" to="/pomodoro">Pomodoro</Link>
-                <p className="decoration-solid rounded-full bg-black w-10 h-10 text-white flex items-center justify-center">{todos.length}</p>
+                <p className="decoration-solid rounded-full bg-black w-10 h-10 text-white flex items-center justify-center">{todos.filter(t => !t.completed).length}</p>
                 <Link className="rounded-full padding-[2em] bg-blue-100 text-black" to="/settings">Settings</Link>
             </div>
 
             <Routes>
                 <Route path="/" element={
-                    <App 
-                        todos={todos} 
-                        addTodo={addTodo} 
-                        deleteTodo={deleteTodo} 
-                        editTodo={editTodo} 
-                    />
+                    <App todos={todos} addTodo={addTodo} deleteTodo={deleteTodo} editTodo={editTodo} />
                 }/>
                 <Route path="/pomodoro" element={
-                    <Pomodoro todos={todos} completeTodo={completeTodo}/>
+                    <Pomodoro todos={todos} completeTodo={completeTodo} editTodo={editTodo} />
                 }/>
                 <Route path="/settings" element={<Settings />}/>
             </Routes>
