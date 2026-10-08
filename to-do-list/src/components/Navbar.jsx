@@ -54,11 +54,11 @@ function Navbar() {
     return (
         <BrowserRouter>
             <div className="flex justify-evenly h-15 w-full mt-[1em] mb-8 mx-auto my-0 bg-blue-200 border-2 border-black items-center">
-                <Link className="rounded-full padding-[2em] bg-blue-100 text-black" to="/">Todos</Link>
-                <Link className="rounded-full padding-[2em] bg-blue-100 text-black" to="/pomodoro">Pomodoro</Link>
+                <Link className="rounded-full padding-[2em] bg-blue-100 text-black p-2" to="/">Todos</Link>
+                <Link className="rounded-full padding-[2em] bg-blue-100 text-black p-2" to="/pomodoro">Pomodoro</Link>
                 <p className="decoration-solid rounded-full bg-black w-10 h-10 text-white flex items-center justify-center">{todos.filter(t => !t.completed).length}</p>
-                <Link className="rounded-full padding-[2em] bg-blue-100 text-black" to="/settings">Settings</Link>
-                <Link className="rounded-full padding-[2em] bg-blue-100 text-black" to="/categories">Categories</Link>
+                <Link className="rounded-full padding-[2em] bg-blue-100 text-black p-2" to="/settings">Settings</Link>
+                <Link className="rounded-full padding-[2em] bg-blue-100 text-black p-2" to="/categories">Categories</Link>
             </div>
 
             <Routes>
