@@ -54,4 +54,4 @@ function App({todos, addTodo, deleteTodo, editTodo}) {
     )
 }
 
-export default App
+export default App;
