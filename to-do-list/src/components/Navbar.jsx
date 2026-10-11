@@ -69,7 +69,7 @@ function Navbar() {
                     <Pomodoro todos={todos} completeTodo={completeTodo} editTodo={editTodo} />
                 }/>
                 <Route path="/settings" element={<Settings />}/>
-                <Route path="/categories" element={<Categories todos={todos}/>}/>
+                <Route path="/categories" element={<Categories todos={todos} deleteTodo={deleteTodo} editTodo={editTodo}/>}/>
             </Routes>
         </BrowserRouter>
     );

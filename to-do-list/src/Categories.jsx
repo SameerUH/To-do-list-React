@@ -1,5 +1,6 @@
-import { useState } from "react"
-import TaskOutput from "./components/TaskOutput"
+//Imports:
+import { useState } from "react";
+import TaskOutput from "./components/TaskOutput";
 import EditCard from './components/EditCard';
 
 function Categories({todos, deleteTodo, editTodo}) {
@@ -9,6 +10,7 @@ function Categories({todos, deleteTodo, editTodo}) {
     const otherTodos = todos.filter(todo => todo.category === "Other" && !todo.completed);
     const careerTodos = todos.filter(todo => todo.category === "Career" && !todo.completed);
 
+    //No category tasks checker:
     const [editingTodo, setEditingTodo] = useState(null);
     const incompletePersonalTodos = todos.filter(e=> e.category == "Personal" && !e.completed);
     const incompleteEducationTodos = todos.filter(e=> e.category == "Education" && !e.completed);
@@ -56,6 +58,9 @@ function Categories({todos, deleteTodo, editTodo}) {
         ))}
         {incompleteOtherTodos.length === 0 && <p>No career tasks to complete</p>}
 
+        {editingTodo && (
+            <EditCard todo={editingTodo} onSave={editTodo} setEdit={() => setEditingTodo(null)}/>
+        )}
         </>
     );
 }
