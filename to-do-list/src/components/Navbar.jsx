@@ -7,6 +7,8 @@ import Categories from '../Categories';
 
 function Navbar() {
     const [todos, setTodos] = useState([]);
+    const [bgcolour, setbgcolour] = useState(() => { return localStorage.getItem('bgcolour') || '#ffffff';})
+    const [fontcolour, setfontcolour] = useState(() => { return localStorage.getItem('fontcolour') || '#000000'})
 
     useEffect(() => {
         fetch('http://localhost:3000/api/todos')
@@ -51,6 +53,14 @@ function Navbar() {
         setTodos(todos.map(t => t.id === id ? { ...t, ...updated } : t));
     };
 
+    useEffect(() => {
+        document.documentElement.style.setProperty('--bg', bgcolour);
+        document.documentElement.style.setProperty('--text', fontcolour)
+        document.documentElement.style.setProperty('--text-h', fontcolour)
+        localStorage.setItem('bgcolour', bgcolour);
+        localStorage.setItem('fontcolour', fontcolour)
+    }, [bgcolour, fontcolour]);
+
     return (
         <BrowserRouter>
             <div className="flex justify-evenly h-15 w-full mt-[1em] mb-8 mx-auto my-0 bg-blue-200 border-2 border-black items-center">
@@ -65,7 +75,7 @@ function Navbar() {
                 <Route path="/" element={<App todos={todos} addTodo={addTodo} deleteTodo={deleteTodo} editTodo={editTodo}/>}/>
                 <Route path="/pomodoro" element={<Pomodoro todos={todos} completeTodo={completeTodo} editTodo={editTodo}/>}/>
                 <Route path="/categories" element={<Categories todos={todos} deleteTodo={deleteTodo} editTodo={editTodo}/>}/>
-                <Route path="/settings" element={<Settings />}/>
+                <Route path="/settings" element={<Settings bgcolour={bgcolour} setbgcolour={setbgcolour} fontcolour={fontcolour} setfontcolour={setfontcolour}/>}/>
             </Routes>
         </BrowserRouter>
     );

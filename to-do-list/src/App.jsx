@@ -41,7 +41,7 @@ function App({todos, addTodo, deleteTodo, editTodo}) {
 
     return (
         <>
-        <div className='flex border-black border-2 w-1/2 mx-auto p-5 font-bold text-2xl mb-8 italic bg-white text-blue-700 justify-center'>
+        <div className='flex border-black border-2 w-1/2 min mx-auto p-5 font-bold text-2xl mb-8 italic bg-white text-blue-700 justify-center'>
             <p>{newQuote}</p>
         </div>
 
