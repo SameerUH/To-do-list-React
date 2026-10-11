@@ -57,19 +57,15 @@ function Navbar() {
                 <Link className="rounded-full padding-[2em] bg-blue-100 text-black p-2" to="/">Todos</Link>
                 <Link className="rounded-full padding-[2em] bg-blue-100 text-black p-2" to="/pomodoro">Pomodoro</Link>
                 <p className="decoration-solid rounded-full bg-black w-10 h-10 text-white flex items-center justify-center">{todos.filter(t => !t.completed).length}</p>
-                <Link className="rounded-full padding-[2em] bg-blue-100 text-black p-2" to="/settings">Settings</Link>
                 <Link className="rounded-full padding-[2em] bg-blue-100 text-black p-2" to="/categories">Categories</Link>
+                <Link className="rounded-full padding-[2em] bg-blue-100 text-black p-2" to="/settings">Settings</Link>
             </div>
 
             <Routes>
-                <Route path="/" element={
-                    <App todos={todos} addTodo={addTodo} deleteTodo={deleteTodo} editTodo={editTodo} />
-                }/>
-                <Route path="/pomodoro" element={
-                    <Pomodoro todos={todos} completeTodo={completeTodo} editTodo={editTodo} />
-                }/>
-                <Route path="/settings" element={<Settings />}/>
+                <Route path="/" element={<App todos={todos} addTodo={addTodo} deleteTodo={deleteTodo} editTodo={editTodo}/>}/>
+                <Route path="/pomodoro" element={<Pomodoro todos={todos} completeTodo={completeTodo} editTodo={editTodo}/>}/>
                 <Route path="/categories" element={<Categories todos={todos} deleteTodo={deleteTodo} editTodo={editTodo}/>}/>
+                <Route path="/settings" element={<Settings />}/>
             </Routes>
         </BrowserRouter>
     );
