@@ -98,7 +98,7 @@ function Settings({bgcolour, setbgcolour, fontcolour, setfontcolour, todos, addT
 
         <h2 className='italic'>Imports/Exports:</h2>
         <div className='flex justify-evenly self-center w-full mb-5'>
-            <button className="border-2 border-black p-2 bg-white w-1/6 rounded-xl cursor-pointer" Click={exportJSON}>Export as JSON</button>
+            <button className="border-2 border-black p-2 bg-white w-1/6 rounded-xl cursor-pointer" onClick={exportJSON}>Export as JSON</button>
             <button className="border-2 border-black p-2 bg-white w-1/6 rounded-xl cursor-pointer" onClick={exportCSV}>Export as CSV</button>
         </div>
 
