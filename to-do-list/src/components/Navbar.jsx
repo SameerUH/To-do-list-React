@@ -75,7 +75,7 @@ function Navbar() {
                 <Route path="/" element={<App todos={todos} addTodo={addTodo} deleteTodo={deleteTodo} editTodo={editTodo}/>}/>
                 <Route path="/pomodoro" element={<Pomodoro todos={todos} completeTodo={completeTodo} editTodo={editTodo}/>}/>
                 <Route path="/categories" element={<Categories todos={todos} deleteTodo={deleteTodo} editTodo={editTodo}/>}/>
-                <Route path="/settings" element={<Settings bgcolour={bgcolour} setbgcolour={setbgcolour} fontcolour={fontcolour} setfontcolour={setfontcolour}/>}/>
+                <Route path="/settings" element={<Settings bgcolour={bgcolour} setbgcolour={setbgcolour} fontcolour={fontcolour} setfontcolour={setfontcolour} todos={todos} addTodo={addTodo}/>}/>
             </Routes>
         </BrowserRouter>
     );
