@@ -27,7 +27,7 @@ function App({todos, addTodo, deleteTodo, editTodo}) {
         'Sometimes when I consider what tremendous consequences come from little things, I am tempted to think there are no little things.'
     ]
 
-    const [newQuote, setnewQuote] = useState("");
+    const [newQuote, setnewQuote] = useState("There is no real excellence in all this world which can be sepearated from the right living.");
 
     const shuffle = useCallback(() => {
         const index = Math.floor(Math.random() * quotes.length);
